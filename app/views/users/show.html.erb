@@ -15,5 +15,19 @@
 
 
  </table>
-</div>
+
+
+<div class="row">
+ 
+ <% if @user.id == current_user.id %>
+    <div class="mt-auto">
+    <a class="btn btn-outline-secondary btn-block" role="button" href="edit_user_path(@user)"><i class="fa fa-user-cog fa-w-20"></i></a>
+    
+    </div>
+  <% end %>　　
+ 
+
+ 
+  
+ </div> 
 </div>
