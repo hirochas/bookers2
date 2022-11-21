@@ -4,13 +4,22 @@
     <h2>User info</h2>
     
     <%= form_with model: @user, url:user_path do |f| %>
-    <h4>画像</h4>
-      <%= f.file_field :profile_image, accept: "image/*" %>
-    <h4>名前</h4>
-      <%= f.text_field :name %>
-    <h4>説明</h4>
-      <%= f.text_area :introduction %>
-    <%= f.submit '投稿' %>
+    
+    <div class="form-group">
+        <label for="user_name">Name</label><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="form-group">  
+        <label for="user_image">Image</label><br>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+    </div>    
+    <div class="form-group">     
+        <label for="introduction">Introduction</label><br>
+        <%= f.text_area :introduction %>
+    </div>    
+    <div class="form-group">
+        <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+    </div>
     <% end %>
   </div>
 </div>  
