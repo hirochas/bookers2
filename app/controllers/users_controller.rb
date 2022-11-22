@@ -24,7 +24,9 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     redirect_to user_path(@user.id) 
-  end  
+  end
+  
+
 
   private
   def user_params
