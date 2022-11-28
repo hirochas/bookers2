@@ -1,6 +1,6 @@
 <h2>User info</h2>
       <%= image_tag user.get_profile_image(100,100) %>
-      
+
       <table class= "table p-12">
        <tr></tr>
        <tr><th>name</th>
@@ -14,7 +14,7 @@
       </table>
 
 
-  
+
     <% if user.id == current_user.id %>
       <div class="mt-auto">
        <a class="btn btn-outline-secondary btn-block" role="button" href="/users/(params[:id])/edit"><i class="fa fa-user-cog fa-w-20"></i></a>
