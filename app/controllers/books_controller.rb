@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
 
 
     # 投稿データの保存
@@ -9,9 +10,9 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       flash[:notice] = "You have created book successfully."
-      redirect_to books_path
+      redirect_to book_path(@book.id)
     else
-      redirect_to book_path
+      redirect_to books_path
     end
   end
 
@@ -19,6 +20,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
     @user = current_user
+
   end
 
   def show
@@ -49,8 +51,15 @@ class BooksController < ApplicationController
 
    # 投稿データのストロングパラメータ
   private
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    login_user_id = current_user.id
+    if(user_id != login_user_id)
+      redirect_to books_path
+    end
+ end
 
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  end
+end
